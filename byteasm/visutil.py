@@ -3,6 +3,7 @@ from . utils import *
 import html
 import io
 import os
+import posixpath
 
 __all__ = [
     'Table'
@@ -85,6 +86,8 @@ def make_visualization_hook_manager( mod, f ) :
     impl = PASS
 
     if path is not None :
+
+      path = posixpath.expanduser( path )
 
       curr = ''
       for p in path.split( '/' ) :

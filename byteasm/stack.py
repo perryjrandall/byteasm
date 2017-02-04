@@ -56,7 +56,6 @@ class StackEffects( object ) :
     for k,v in labels.items() :
       labeled[ v ].append( k )
 
-    self._ip       = 0
     self._blk      = None
     self._labeled  = labeled
     self._blocks   = {}
@@ -64,14 +63,13 @@ class StackEffects( object ) :
   def blocks( self ) :
     return self._blocks.items()
 
-  def insert( self, ip_next, op, raw, arg, typ ) :
+  def insert( self, ip, oplen, op, raw, arg, typ ) :
 
-    ip = self._ip
-    oplen = ip_next-ip
+    ip_next = ip + oplen
 
     blk = self._blk
     if blk is None :
-
+    
       blk = Block()
 
       self._blocks[ ip ] = blk
@@ -92,8 +90,6 @@ class StackEffects( object ) :
         blk.targets[dst( ip_next, raw )] = eff
       blk.delta_includes_last = (delta is not None)
       self._blk = None
-
-    self._ip = ip_next
 
 
 

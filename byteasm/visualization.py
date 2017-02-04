@@ -1,4 +1,4 @@
-from . import builder
+from . import assemble
 from . aexpr import *
 from . constants import *
 from . stack import *
@@ -121,14 +121,13 @@ def visualize( se, output, indicate_dead=True ) :
       G.add_edge( source_ip, target_ip, **params )
 
   G.draw( output, prog='dot' )
-  #G.write( output[:-4] + '.dot' )
 
 
 
 ##################################################
 #                                                #
 ##################################################
-set_visualization_path = make_visualization_hook_manager( builder, visualize )
+set_visualization_path = make_visualization_hook_manager( assemble, visualize )
 
 
 
