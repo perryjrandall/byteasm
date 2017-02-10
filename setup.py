@@ -2,13 +2,13 @@ import sys
 from setuptools import setup
 
 __author__  = 'Zachariah Reed'
-__version__ = '0.1'
+__version__ = '0.2'
 __contact__ = 'zreed@fastmail.com'
 __url__     = 'https://github.com/zachariahreed/byteasm'
 __license__ = 'GPL'
 
-if sys.version_info < (3,4) :
-  raise NotImplementedError( 'byteasm requires Python 3.4+' )
+if sys.version_info < (3,6) :
+  raise NotImplementedError( 'byteasm requires Python 3.6+' )
 
 setup(
     name         = 'byteasm'
@@ -26,7 +26,6 @@ setup(
                       , 'Intended Audience :: Developers'
                       , 'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)'
                       , 'Programming Language :: Python :: 3 :: Only'
-                      , 'Programming Language :: Python :: 3.4'
-                      , 'Programming Language :: Python :: 3.5'
+                      , 'Programming Language :: Python :: 3.6'
                       ]
   )
