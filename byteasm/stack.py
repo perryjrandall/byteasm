@@ -157,7 +157,6 @@ def _make_effects_tab() :
     , ( opcode.hasjabs        , 1 , Next(), Arg()                                                         )
     , ( RAISE_VARARGS         , 1 , Other( IP_EXCEPT )                                                    )
     , ( RETURN_VALUE          , 1 , Other( IP_END )                                                       )
-    , ( CONTINUE_LOOP         , 3 , Arg()                                                                 )
     , ( END_FINALLY           , 3 , Next( se=(lambda s,b,e:select_expr(e,s-6,s-1)), ee=False, ne=third )  )
     , ( FOR_ITER              , 3 , Next( se=1 ), Arg( se=-1 )                                            )
     , ( JUMP_ABSOLUTE         , 3 , Arg()                                                                 )
@@ -166,9 +165,7 @@ def _make_effects_tab() :
     , ( JUMP_IF_TRUE_OR_POP   , 3 , Next( se=-1 ), Arg()                                                  )
     , ( POP_BLOCK             , 3 , Next( se=PeekFrameStack, fe=PopFrameStack )                           )
     , ( POP_EXCEPT            , 3 , Next( se=PeekFrameStack, fe=PopFrameStack, ee=False )                 )
-    , ( SETUP_EXCEPT          , 3 , Next( fe=PushFrameStack ), Arg( se=6, fe=PushFrameStack, ee=True )    )
     , ( SETUP_FINALLY         , 3 , Next( fe=PushFrameStack, ee=False ), Arg( se=6, ee=True )             )
-    , ( SETUP_LOOP            , 3 , Next( fe=PushFrameStack ), Arg()                                      )
     , ( SETUP_WITH            , 3 , Next( se=1, fe=PushFrameStack ), Arg( se=7, ee=True )                 )
     )
 

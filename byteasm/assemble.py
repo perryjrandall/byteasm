@@ -274,6 +274,7 @@ def assemble(
 
   co = types.CodeType(
             positional_count
+          , positional_count
           , kwonly_count
           , len(varnames)
           , stackdepth
